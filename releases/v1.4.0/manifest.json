@@ -1,0 +1,43 @@
+{
+  "manifest_version": 3,
+  "name": "Window Sessions",
+  "version": "1.4.0",
+  "description": "Save named browser window sessions and restore all tabs later — in a new window or the current one.",
+  "permissions": ["tabs", "windows", "storage"],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_title": "Window Sessions",
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "options_page": "options/options.html",
+  "commands": {
+    "_execute_action": {
+      "suggested_key": {
+        "default": "Alt+Shift+W",
+        "mac": "Alt+Shift+W"
+      },
+      "description": "Open Window Sessions popup"
+    },
+    "quick-save": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+S",
+        "mac": "Command+Shift+S"
+      },
+      "description": "Quick save current window"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

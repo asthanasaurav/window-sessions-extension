@@ -1,0 +1,54 @@
+body {
+  margin: 0;
+  font: 14px/1.4 system-ui, -apple-system, sans-serif;
+  color: #1f1f1f;
+  background: #fff;
+}
+
+main {
+  padding: 20px;
+}
+
+h1 {
+  margin: 0 0 8px;
+  font-size: 18px;
+}
+
+p {
+  margin: 0 0 16px;
+  color: #5f6368;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+button {
+  border: none;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font: inherit;
+  cursor: pointer;
+}
+
+.primary-btn {
+  background: #1a73e8;
+  color: #fff;
+}
+
+.secondary-btn {
+  background: #f1f3f4;
+  color: #1f1f1f;
+}
+
+.status {
+  min-height: 18px;
+  margin-top: 12px;
+  font-size: 12px;
+}
+
+.status.error {
+  color: #c5221f;
+}

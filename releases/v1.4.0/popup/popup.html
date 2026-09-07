@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Window Sessions</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <header class="header">
+      <img src="../icons/icon48.png" width="24" height="24" alt="" />
+      <div class="header-copy">
+        <h1>Window Sessions</h1>
+        <p id="headerMeta">Save and restore tab sets</p>
+      </div>
+      <button id="openOptionsBtn" class="icon-btn" type="button" title="Settings" aria-label="Settings">Set</button>
+    </header>
+
+    <div class="toolbar">
+      <input id="searchInput" type="search" placeholder="Search sessions…" autocomplete="off" />
+      <button id="saveBtn" class="primary-btn" type="button">+ Save current window</button>
+      <button id="parkInactiveBtn" class="idle-btn" type="button" title="Move background tabs to a minimized idle window and put them to sleep to free memory">
+        Park inactive tabs
+      </button>
+    </div>
+
+    <main id="sessionList" class="session-list" aria-live="polite"></main>
+
+    <footer class="footer">
+      <span id="footerStatus"></span>
+    </footer>
+
+    <dialog id="saveDialog" class="modal">
+      <form id="saveForm" method="dialog">
+        <h2>Save current window</h2>
+        <p id="saveSubtitle" class="modal-subtitle"></p>
+
+        <label class="field">
+          <span>Session name</span>
+          <input id="saveNameInput" type="text" required maxlength="120" placeholder="e.g. EMEA Research" autofocus />
+        </label>
+
+        <label class="checkbox-row">
+          <input id="updateExistingInput" type="checkbox" />
+          <span>Update existing session if name matches</span>
+        </label>
+
+        <div class="modal-actions">
+          <button type="button" class="secondary-btn" data-close-dialog>Cancel</button>
+          <button type="submit" class="primary-btn">Save</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog id="restoreDialog" class="modal">
+      <form id="restoreForm" method="dialog">
+        <h2 id="restoreTitle">Restore session</h2>
+        <p id="restoreSubtitle" class="modal-subtitle"></p>
+
+        <fieldset class="radio-group">
+          <label class="radio-row">
+            <input type="radio" name="restoreTarget" value="new" checked />
+            <span>
+              <strong>Open in new window</strong>
+              <small>Recommended — keeps your current tabs</small>
+            </span>
+          </label>
+          <label class="radio-row">
+            <input type="radio" name="restoreTarget" value="current" />
+            <span>
+              <strong>Open in this window</strong>
+              <small>Adds or replaces tabs in the focused window</small>
+            </span>
+          </label>
+        </fieldset>
+
+        <div id="currentWindowOptions" class="current-window-options hidden">
+          <label class="checkbox-row">
+            <input id="replaceTabsInput" type="checkbox" />
+            <span>Replace current tabs (keep pinned)</span>
+          </label>
+          <label class="checkbox-row">
+            <input id="appendTabsInput" type="checkbox" checked />
+            <span>Append tabs (don’t close existing)</span>
+          </label>
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" class="secondary-btn" data-close-dialog>Cancel</button>
+          <button type="submit" class="primary-btn">Open session</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog id="detailDialog" class="modal modal-wide">
+      <div class="detail-header">
+        <div>
+          <h2 id="detailTitle"></h2>
+          <p id="detailMeta" class="modal-subtitle"></p>
+        </div>
+        <button type="button" class="icon-btn" data-close-dialog aria-label="Close">×</button>
+      </div>
+
+      <div class="detail-actions">
+        <button id="detailRestoreBtn" class="primary-btn" type="button">Restore all</button>
+        <button id="detailUpdateBtn" class="secondary-btn" type="button">Update</button>
+        <button id="detailDeleteBtn" class="danger-btn" type="button">Delete</button>
+      </div>
+
+      <label class="checkbox-row detail-select-all">
+        <input id="detailSelectAll" type="checkbox" checked />
+        <span id="detailSelectAllLabel">Select all</span>
+      </label>
+
+      <div id="detailTabList" class="detail-tab-list"></div>
+
+      <div class="modal-actions">
+        <button id="detailRestoreSelectedBtn" class="primary-btn" type="button">Restore selected</button>
+      </div>
+    </dialog>
+
+    <script type="module" src="popup.js"></script>
+  </body>
+</html>

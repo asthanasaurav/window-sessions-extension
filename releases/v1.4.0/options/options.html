@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Window Sessions — Settings</title>
+    <link rel="stylesheet" href="options.css" />
+  </head>
+  <body>
+    <main class="page">
+      <header>
+        <img src="../icons/icon48.png" width="32" height="32" alt="" />
+        <div>
+          <h1>Window Sessions</h1>
+          <p>Defaults for saving and restoring tab sets.</p>
+        </div>
+      </header>
+
+      <section class="card">
+        <h2>Restore defaults</h2>
+
+        <label class="field">
+          <span>Default restore target</span>
+          <select id="defaultRestoreTarget">
+            <option value="new">New window</option>
+            <option value="current">Current window</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <span>When restoring to current window</span>
+          <select id="currentWindowMode">
+            <option value="append">Append tabs</option>
+            <option value="replace">Replace tabs (keep pinned)</option>
+          </select>
+        </label>
+
+        <label class="checkbox-row">
+          <input id="keepPinnedOnReplace" type="checkbox" checked />
+          <span>Keep pinned tabs when replacing current window tabs</span>
+        </label>
+
+        <label class="checkbox-row">
+          <input id="skipUnrestorable" type="checkbox" checked />
+          <span>Skip unrestorable URLs (chrome://, etc.) and show count</span>
+        </label>
+      </section>
+
+      <section class="card">
+        <h2>Park inactive tabs</h2>
+        <p class="muted">Moves background tabs into a minimized idle window and puts them to sleep to free memory. Click a sleeping tab to reload it.</p>
+
+        <label class="checkbox-row">
+          <input id="idleKeepPinned" type="checkbox" checked />
+          <span>Leave pinned tabs where they are</span>
+        </label>
+
+        <label class="checkbox-row">
+          <input id="idleKeepAudible" type="checkbox" checked />
+          <span>Leave tabs that are playing audio</span>
+        </label>
+
+        <label class="checkbox-row">
+          <input id="idleMinimizeWindow" type="checkbox" checked />
+          <span>Minimize the idle window after parking tabs</span>
+        </label>
+      </section>
+
+      <section class="card">
+        <h2>Storage</h2>
+        <p id="storageSummary" class="muted"></p>
+        <div class="actions">
+          <button id="exportBtn" type="button" class="secondary-btn">Export all sessions</button>
+          <label class="import-btn secondary-btn">
+            Import JSON
+            <input id="importInput" type="file" accept="application/json,.json" hidden />
+          </label>
+        </div>
+      </section>
+
+      <p id="status" class="status"></p>
+    </main>
+    <script type="module" src="options.js"></script>
+  </body>
+</html>

@@ -1,0 +1,104 @@
+:root {
+  color-scheme: light dark;
+  --bg: #f8f9fa;
+  --surface: #ffffff;
+  --text: #202124;
+  --muted: #5f6368;
+  --border: #dadce0;
+  --accent: #1a73e8;
+  --accent-text: #ffffff;
+  --danger: #d93025;
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #202124;
+    --surface: #292a2d;
+    --text: #e8eaed;
+    --muted: #9aa0a6;
+    --border: #3c4043;
+    --accent: #8ab4f8;
+    --accent-text: #202124;
+  }
+}
+
+body {
+  margin: 0;
+  padding: 16px;
+  background: var(--bg);
+  color: var(--text);
+}
+
+h1 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.subtitle {
+  margin: 6px 0 14px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.field {
+  display: grid;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.field input {
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 13px;
+}
+
+.checkbox-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 12px;
+  font-size: 12px;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.primary-btn,
+.secondary-btn {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 8px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.primary-btn {
+  background: var(--accent);
+  color: var(--accent-text);
+}
+
+.secondary-btn {
+  background: var(--surface);
+  color: var(--text);
+  border-color: var(--border);
+}
+
+.status {
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.status.error {
+  color: var(--danger);
+}
